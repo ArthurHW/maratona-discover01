@@ -11,6 +11,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap"
         rel="stylesheet">
+    <link rel="icon" href="./assets/dollar-symbol.svg">
 </head>
 
 <body>
@@ -53,7 +54,11 @@
         <section id="transaction">
             <h2 class="sr-only">Transações</h2>
 
-            <a onclick="Modal.open()" class="button new" href="#">+ Nova Transação</a>
+            <div class="add-and-remove">
+                <a onclick="Modal.open()" class="button new" href="#">+ Nova Transação</a>
+                <a onclick="Transaction.removeAll()" class="button remove" href="#/">- Remover Transações</a>
+            </div>
+            
 
             <table id="data-table">
                 <thead>
@@ -77,6 +82,7 @@
 
     <footer>
         2021 - dev.finance$
+        <div>Icons made by <a href="https://www.flaticon.com/authors/good-ware" title="Good Ware">Good Ware</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
     </footer>
 
     <div class="modal-overlay">
@@ -96,7 +102,7 @@
 
                     <div class="input-group">
                         <label class="sr-only" for="amount">Valor</label>
-                        <input type="number" step="0.1" id="amount" name="amount" placeholder="0.00">
+                        <input type="number" step="0.01" id="amount" name="amount" placeholder="0.00">
                         <small class="help">Use o sinal - (negativo) para despesas e . (ponto) para casas decimais
                             decimais</small>
                     </div>
@@ -104,6 +110,9 @@
                     <div class="input-group">
                         <label class="sr-only" for="date">Data</label>
                         <input type="date" id="date" name="date" placeholder="01/01/2021">
+                    </div>
+                    <div>
+                        <small id="warning-message"></small>
                     </div>
 
                     <div class="input-group actions">

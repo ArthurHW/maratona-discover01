@@ -97,6 +97,21 @@ button:hover {
     opacity: 1;
 }
 
+.add-and-remove {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button.remove {
+    color: var(--red);
+    opacity: .6;
+}
+
+.button.remove:hover {
+    opacity: 1;
+}
+
 /* Header ======================= */
 
 header {
@@ -292,6 +307,11 @@ input {
 .input-group.actions .button,
 .input-group.actions button {
     width: 40%;
+}
+
+#warning-message {
+    color: var(--red);
+    opacity: .9
 }
 
 

@@ -40,6 +40,12 @@ const Transaction = {
         App.reload()
     },
 
+    removeAll(){
+        Transaction.all = []
+
+        App.reload()
+    },
+
     incomes(){
         // somar as entradas
         let income = 0
@@ -145,7 +151,7 @@ const Form = {
         const { description, amount, date } = Form.getValues()
 
         if (description.trim() === "" || amount.trim() === "" || date.trim() === ""){
-            throw new Error("Por favor, preencha todos os campos")
+            throw new Error("Por favor, preencha todos os campos!")
         }
     },
 
@@ -169,6 +175,14 @@ const Form = {
         Form.date.value=""
     },
 
+    displayWarningMessage(message){
+        document.getElementById('warning-message').innerHTML = message
+    },
+
+    removeWarningMessage(){
+        document.getElementById('warning-message').innerHTML = ""
+    },
+
     submit(event){
         event.preventDefault()
 
@@ -178,12 +192,12 @@ const Form = {
             Transaction.add(transaction)
             Form.clearFields()
             Modal.close()
+            Form.removeWarningMessage()
         } catch(error) {
-            alert(error.message)
+            Form.displayWarningMessage(error.message);
         }
-
-        
     }
+
 }
 
 
